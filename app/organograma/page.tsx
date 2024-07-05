@@ -13,13 +13,7 @@ const data = [
     email: "lnewland@yoyodyne.com",
     cargo: "Diretor",
     status: "travel",
-    subordinates: [
-      12,
-      13,
-      14,
-      "SUPERINTENDENCIA ACIARIA",
-
-    ],
+    subordinates: [12, 13, 14, "SUPERINTENDENCIA ACIARIA"],
   },
   {
     id: 2,
@@ -27,8 +21,7 @@ const data = [
     email: "lnewland@yoyodyne.com",
     cargo: "Diretor",
     status: "travel",
-    subordinates: [      "SUPERINTENDENCIA LAMINACAO",
-      "SUPERINTENDENCIA TREFILA",],
+    subordinates: ["SUPERINTENDENCIA LAMINACAO", "SUPERINTENDENCIA TREFILA"],
   },
   {
     id: 3,
@@ -121,7 +114,7 @@ const data = [
 
 export default function Org() {
   return (
-    <main className="p-8 flex flex-col items-center gap-2">
+    <main className="p-8 flex flex-col items-center">
       <OrgChart data={data} />
     </main>
   );

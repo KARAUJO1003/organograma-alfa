@@ -33,7 +33,7 @@ const OrgList: React.FC<OrgListProps> = ({ data, subordinates, moveNode }) => {
   };
 
   return (
-    <ul className="flex w-full justify-center gap-4">
+    <ul className="flex w-full justify-center">
       {subordinates.map((subId) => {
         const element = data.find((item) => item.id === subId);
         if (element) {
@@ -82,7 +82,7 @@ const OrgNodeComponent: React.FC<OrgNodeComponentProps> = ({ element, data, isCo
   }));
 
   return (
-    <li ref={drop} className={` border border-zinc-600/50 bg-zinc-800/10 backdrop-blur-sm gap-4 rounded-lg p-4 h-fit flex flex-col items-center ${
+    <li ref={drop} className={` border-t border-zinc-600/50 bg-zinc-800/10 backdrop-blur-sm rounded-lg b-4 p-4 h-fit flex flex-col items-center ${
       isDragging 
       ? 'opacity-50' 
       : ''}
@@ -90,7 +90,7 @@ const OrgNodeComponent: React.FC<OrgNodeComponentProps> = ({ element, data, isCo
     `}>
       <div
         ref={drag}
-        className={`relative w-fit min-w-64 font-bold justify-center flex flex-col p-6 rounded-lg border border-zinc-500/50 bg-zinc-800 text-white cursor-pointer before:content-[''] before:absolute before:w-1 before:h-5 before:bg-zinc-600/50 before:-top-5 ${element.subordinates?.length && 'after:content-[""] after:absolute after:w-1 after:h-5 after:bg-zinc-600/50 after:-bottom-5 after:left-1/2 after:transform-[-50%,-50%] after:z-50 after:rounded-full'} before:left-1/2 before:transform-[-50%,-50%] before:z-50 before:rounded-full before:shadow-lg before:transition-transform before:duration-300 before:ease-in-out  ${typeof element.id === "string" ? "!h-fit !bg-blue-500/50 backdrop-blur-md text-blue-200 py-2 rounded-full" : "min-h-32"} `}
+        className={`relative w-fit min-w-64 font-bold justify-center flex flex-col mb-4 p-6 rounded-lg border border-zinc-500/50 bg-zinc-800 text-white cursor-pointer before:content-[''] before:absolute before:w-1 before:h-5 before:bg-zinc-600/50 before:-top-5 ${element.subordinates?.length && 'after:content-[""] after:absolute after:w-1 after:h-5 after:bg-zinc-600/50 after:-bottom-5 after:left-1/2 after:transform-[-50%,-50%] after:z-50 after:rounded-full'} before:left-1/2 before:transform-[-50%,-50%] before:z-50 before:rounded-full before:shadow-lg before:transition-transform before:duration-300 before:ease-in-out  ${typeof element.id === "string" ? "!h-fit !bg-blue-500/50 backdrop-blur-md text-blue-200 py-2 rounded-full" : "min-h-32"} `}
         onClick={() => toggleCollapse(element.id)}
       >
 
