@@ -82,7 +82,7 @@ const OrgNodeComponent: React.FC<OrgNodeComponentProps> = ({ element, data, isCo
   }));
 
   return (
-    <li ref={drop} className={` border border-zinc-600/50 gap-4 rounded-lg p-4 h-fit flex flex-col items-center ${
+    <li ref={drop} className={` border border-zinc-600/50 bg-zinc-800/10 backdrop-blur-sm gap-4 rounded-lg p-4 h-fit flex flex-col items-center ${
       isDragging 
       ? 'opacity-50' 
       : ''}
@@ -95,10 +95,10 @@ const OrgNodeComponent: React.FC<OrgNodeComponentProps> = ({ element, data, isCo
       >
 
         <span className={`text-xs absolute ${typeof element.id === 'string' ? '-top-1 left-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-200 bg-blue-950' : 'top-2 right-2 bg-zinc-500'}  rounded-full  w-6 flex items-center justify-center aspect-square`}>{element.subordinates?.length ? element.subordinates?.length : 0}</span>
-        <span className="text-lg">{element.name}</span>
-        <span className="text-sm">{element.email}</span>
-        <span className="text-sm">{element.status}</span> 
-        <span className="text-sm">{element.cargo}</span> 
+        <span className="text-lg text-zinc-200">{element.name}</span>
+        <span className="text-sm text-zinc-400 font-normal">{element.email}</span>
+        <span className="text-sm text-zinc-400 font-normal">{element.status}</span> 
+        <span className="text-sm text-zinc-400 font-normal">{element.cargo}</span> 
         
       </div>
       <DragPreviewImage connect={preview} src="/path-to-your-image" />

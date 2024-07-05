@@ -18,8 +18,7 @@ const data = [
       13,
       14,
       "SUPERINTENDENCIA ACIARIA",
-      "SUPERINTENDENCIA LAMINACAO",
-      "SUPERINTENDENCIA TREFILA",
+
     ],
   },
   {
@@ -28,7 +27,8 @@ const data = [
     email: "lnewland@yoyodyne.com",
     cargo: "Diretor",
     status: "travel",
-    subordinates: [],
+    subordinates: [      "SUPERINTENDENCIA LAMINACAO",
+      "SUPERINTENDENCIA TREFILA",],
   },
   {
     id: 3,
