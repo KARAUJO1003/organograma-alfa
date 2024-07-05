@@ -11,6 +11,7 @@ interface OrgNode {
   status?: string;
   icon?: string;
   subordinates?: (string | number)[];
+  cargo?: string; // Add the 'cargo' property
 }
 
 interface OrgListProps {
@@ -89,10 +90,16 @@ const OrgNodeComponent: React.FC<OrgNodeComponentProps> = ({ element, data, isCo
     `}>
       <div
         ref={drag}
-        className={`relative w-fit min-w-64 font-bold justify-center flex ${typeof element.id === "string" ? "h-fit bg-green-500" : "min-h-32"} p-6 rounded-lg border bg-zinc-800 text-white cursor-pointer before:content-[''] before:absolute before:w-1 before:h-5 before:bg-zinc-600/50 before:-top-5  before:left-1/2 before:transform-[-50%,-50%] before:z-50 before:rounded-full before:shadow-lg before:transition-transform before:duration-300 before:ease-in-out `}
+        className={`relative w-fit min-w-64 font-bold justify-center flex flex-col p-6 rounded-lg border border-zinc-500/50 bg-zinc-800 text-white cursor-pointer before:content-[''] before:absolute before:w-1 before:h-5 before:bg-zinc-600/50 before:-top-5 ${element.subordinates?.length && 'after:content-[""] after:absolute after:w-1 after:h-5 after:bg-zinc-600/50 after:-bottom-5 after:left-1/2 after:transform-[-50%,-50%] after:z-50 after:rounded-full'} before:left-1/2 before:transform-[-50%,-50%] before:z-50 before:rounded-full before:shadow-lg before:transition-transform before:duration-300 before:ease-in-out  ${typeof element.id === "string" ? "!h-fit !bg-blue-500/50 backdrop-blur-md text-blue-200 py-2 rounded-full" : "min-h-32"} `}
         onClick={() => toggleCollapse(element.id)}
       >
-        {element.name}
+
+        <span className={`text-xs absolute ${typeof element.id === 'string' ? '-top-1 left-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-200 bg-blue-950' : 'top-2 right-2 bg-zinc-500'}  rounded-full  w-6 flex items-center justify-center aspect-square`}>{element.subordinates?.length ? element.subordinates?.length : 0}</span>
+        <span className="text-lg">{element.name}</span>
+        <span className="text-sm">{element.email}</span>
+        <span className="text-sm">{element.status}</span> 
+        <span className="text-sm">{element.cargo}</span> 
+        
       </div>
       <DragPreviewImage connect={preview} src="/path-to-your-image" />
       {!isCollapsed && element.subordinates && element.subordinates.length > 0 && (
@@ -143,7 +150,7 @@ export const OrgChart: React.FC<OrgChartProps> = ({ data: initialData }) => {
       <main className="w-full flex flex-col items-center gap-4">
         {rootNode && (
           <>
-            <p className="w-fit min-w-64 font-bold justify-center flex p-6 rounded-lg border h-fit bg-green-500 text-white">
+            <p className="w-fit min-w-64 font-bold justify-center flex p-6 rounded-lg border h-fit bg-green-500 text-white relative before:content-[''] before:absolute before:w-1 before:h-5 before:bg-zinc-600/50 before:-bottom-5  before:left-1/2 before:transform-[-50%,-50%] before:z-50 before:rounded-full before:shadow-lg before:transition-transform before:duration-300 before:ease-in-out ">
               {rootNode.name}
             </p>
             {console.log('data', data)}
